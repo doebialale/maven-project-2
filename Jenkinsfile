@@ -1,7 +1,7 @@
 pipeline {
   agent any
-  environment {
-    WORKSPACE = "${env.WORKSPACE}"
+environment {
+    PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"
   }
   tools {
     maven 'localMaven'
