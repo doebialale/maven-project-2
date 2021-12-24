@@ -19,12 +19,7 @@ pipeline {
         }
       }
     }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'localMaven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=cvd"
-    }
-  }
+
     stage('SonarQube Scan') {
       steps {
         sh """mvn sonar:sonar \
