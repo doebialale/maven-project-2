@@ -19,13 +19,11 @@ pipeline {
         }
       }
     }
-    stage('SonarQube Scan') {
-      steps {
+    stage('SonarQube Scant') {
         mvn clean verify sonar:sonar \
           -Dsonar.projectKey=sonart \
           -Dsonar.host.url=http://localhost:9000 \
           -Dsonar.login=5fb25891fe10c975b429dafc5ba9cf342f79ce67
-      }
     }
     stage('Upload to Artifactory') {
       steps {
