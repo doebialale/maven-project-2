@@ -19,7 +19,7 @@ pipeline {
         }
       }
     }
-    stage('SonarQube Scan') {
+    stage('SonarQube Scanttt') {
       steps {
         sh """mvn sonar:sonar \
         -Dsonar.host.url=http://54.212.76.134:9000 \
