@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh """mvn clean verify sonar:sonar \
   -Dsonar.projectKey=as \
-  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.host.url=http://127.0.0.1:9092/sonar \
   -Dsonar.login=7414136102ea71d89d5ebd0b9395faf704d73272"""
       }
     }
