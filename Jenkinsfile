@@ -19,13 +19,16 @@ pipeline {
         }
       }
     }
-    stage('SonarQube Scan') {
-      steps {
-        sh """mvn sonar:sonar \
-  -Dsonar.host.url=http://54.212.76.134:9000 \
-  -Dsonar.login=e080ed1c637c253785555b7aad92969c50e8e820"""
-      }
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonart"
     }
+  }
+}
     stage('Upload to Artifactory') {
       steps {
         sh "mvn clean deploy -DskipTests"
