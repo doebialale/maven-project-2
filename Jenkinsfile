@@ -19,13 +19,10 @@ pipeline {
         }
       }
     }
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'localMaven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonart"
+    stage('SonarQube Analysis') {
+      def mvn = tool 'localMaven';
+      withSonarQubeEnv() {
+        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonart"
     }
   }
 }
